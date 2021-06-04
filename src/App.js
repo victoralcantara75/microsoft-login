@@ -1,5 +1,6 @@
 import Login from './components/Login';
 import LoginDTI from './components/LoginDTI'
+import Redirect from './components/Redirect'
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/" component={Login}/>
           <Route path="/microsoft" component={Login}/>
           <Route path="/dtidigital" component={LoginDTI}/>
+          <Route path="/redirect" component={Redirect}/>
       </Switch>
     </Router>
     </>

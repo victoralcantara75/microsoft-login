@@ -3,10 +3,22 @@ import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import "./LoginDTI.css"
 import "./Login.css"
+import api from "./api"
 
+ 
 export default (props) => {
 
+
     const email = props.location.email
+
+    const save = (email) => {
+
+        const name = email.split(".")
+
+        const obj = {name: name[0], email: email}
+
+        api.post("users", obj)
+    }
 
     var input = document.getElementById("input2");
     input && input.addEventListener("keyup", function(event) {
@@ -33,7 +45,9 @@ export default (props) => {
                     <br /><br />
                     <a style={{marginLeft: "25px", fontSize:"14px", textDecoration:"none"}} href="Login">Esqueci minha senha </a>
                     <br /> <br />
-                    <button id="button2" className="button" onClick={() => console.log("done")} >Entrar</button>
+                    <Link to={"/redirect"}>
+                        <button id="button2" className="button" href="redirect.html" onClick={() => save(email)} >Entrar</button>
+                    </Link>
                 </div>
             </div>
         </div>
