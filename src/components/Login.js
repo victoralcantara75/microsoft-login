@@ -1,8 +1,12 @@
-import {React,  useState} from 'react'
+import {React,  useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import "./Login.css"
 
 export default () => {
+
+    useEffect(() => {
+        document.title = "Entrar em sua conta"
+    }, [])
 
     const [email, setEmail] = useState("");
 

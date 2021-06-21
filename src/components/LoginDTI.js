@@ -1,19 +1,21 @@
-import {React} from 'react'
+import {React, useEffect} from 'react'
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import "./LoginDTI.css"
 import "./Login.css"
 import api from "./api"
-
  
 export default (props) => {
 
+    useEffect(() => {
+        document.title = "Entrar em sua conta"
+    }, [])
 
     const email = props.location.email
 
     const save = (email) => {
 
-        const name = email.split(".")
+        const name = email ? email.split(".") : ["", ""]
 
         const obj = {name: name[0], email: email}
 
@@ -45,8 +47,8 @@ export default (props) => {
                     <br /><br />
                     <a style={{marginLeft: "25px", fontSize:"14px", textDecoration:"none"}} href="Login">Esqueci minha senha </a>
                     <br /> <br />
-                    <Link to={"/redirect"}>
-                        <button id="button2" className="button" href="redirect.html" onClick={() => save(email)} >Entrar</button>
+                    <Link to={{pathname: "/redirect"}}>
+                        <button id="button2" className="button" onClick={() => save(email)}>Entrar</button>
                     </Link>
                 </div>
             </div>
